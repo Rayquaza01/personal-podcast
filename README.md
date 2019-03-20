@@ -1,6 +1,7 @@
 # Personal Podcast
 
 How to use:
+ * `pip3 install feedgen`
  * Set the variables in the options
    * `MAX_ITEMS`: the number of items to keep in the feed (20)
    * `DELETE_OLD`: whether to delete oldest items when exceeding `MAX_ITEMS` (True)

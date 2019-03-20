@@ -37,16 +37,20 @@ if DELETE_OLD:
 items = items[:MAX_ITEMS][::-1]
 
 fg = FeedGenerator()
+fg.load_extension("podcast")
 fg.title(TITLE)
 fg.description(DESC)
+fg.author({"name": "Rayquaza01"})
 fg.link(href=SERVER + "podcast.rss", rel="self")
-fg.load_extension("podcast")
+fg.logo(LOGO)
+fg.podcast.itunes_image(LOGO)
 
 # add entries
 for item in items:
     fe = fg.add_entry()
-    url = SERVER + item
+    url = SERVER + urllib.parse.quote(item)
     fe.id(url)
+    fe.published(datetime.datetime.fromtimestamp(os.path.getmtime(item), tz=datetime.timezone.utc))
     fe.title(item)
     fe.description(url)
     fe.enclosure(url, 0, "audio/mpeg")
