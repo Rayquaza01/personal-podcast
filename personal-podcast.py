@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import os
 import datetime
+import urllib.parse
 from feedgen.feed import FeedGenerator
 
 ###########
